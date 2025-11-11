@@ -1,147 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio of Leanne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-        background-color: #2b0d25;
-        color: #fff;
-        overflow-x: hidden;
-        position: relative;
-        min-height: 100vh;
-        }
+      background-color: #fce4ec;
+      color: #2b0d25;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
 
-        .circle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(200, 60, 140, 0.5);
-        z-index: 0;
-        }
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.20);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding: 1rem 2rem;
+    }
 
-        .circle.one {
-        width: 450px;
-        height: 450px;
-        top: -120px;
-        left: -120px;
-        opacity: 0.3;
-        }
+    .hero-image img {
+      width: 500px;
+      border-radius: 25px;
+    }
 
-        .circle.two {
-        width: 500px;
-        height: 500px;
-        bottom: -100px;
-        right: 150px;
-        opacity: 0.5;
-        }
+    .hero-buttons a {
+      text-decoration: none;
+      background: #c54f82;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 6px;
+      margin-right: 15px;
+      transition: background 0.3s;
+    }
 
-        .circle.three {
-        width: 400px;
-        height: 400px;
-        bottom: 60px;
-        right: -60px;
-        opacity: 0.3;
-        }
+    .hero-buttons a:hover {
+      background: #a33c6a;
+    }
 
-        .circle.four {
-        width: 600px;
-        height: 600px;
-        bottom: 50px;
-        right: 140px;
-        opacity: 0.6;
-        background: rgba(255, 220, 235, 0.5);
+    .btn-outline-light:hover {
+      background-color: #a33c6a;
+      color: white;
+    }
 
-        }
+    .font-color {
+      color: #c54f82;
+    }
 
-        .hero {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 80vh;
-        padding: 0 50px;
-        }
-
-        .hero-text h1 {
-        text-align: center;
-        padding: 40px 0;
-        font-weight: bold;
-        color: #d37dc8;
-        }
-
-        .hero-intro {
-        text-align: center;
-        padding: 20px 0;
-        color: #FFFFFF;
-        }
-
-        .hero-buttons a {
-        text-decoration: none;
-        background: #c54f82;
-        color: white;
-        padding: 10px 25px;
-        border-radius: 6px;
-        margin-right: 15px;
-        transition: background 0.3s;
-        }
-
-        .hero-buttons a:hover {
-        background: #a33c6a;
-        }
-
-        .hero-image img {
-        width: 500px;
-        border-radius: 25px;
-        }
-    </style>
+    .container-position {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container-fluid p-3 shadow">
-    <div class="row">
-        <div class="col-12 col-sm-3">
-            <div class="h3 text-center text-sm-start">Portfolio</div>
+  <div class="container p-4 mt-3 shadow-lg fixed-top rounded-nav glassmorphism">
+    <div class="row align-items-center">
+      <div class="col-md-6 col-12 text-md-start text-center">
+        <div class="h3 fw-bold m-0">Portfolio</div>
       </div>
-      <div class="col-12 col-sm text-center">
+      <div class="col-md-6 col-12 text-md-end text-center mt-2 mt-md-0 p-3">
         <div class="row">
-          <div class="col">Home</div>
-          <div class="col">About</div>
-          <div class="col">Service</div>
-          <div class="col">Projects</div>
+          <div class="col"><a href="#home" class="font-color text-decoration-none">Home</a></div>
+          <div class="col"><a href="#about" class="font-color text-decoration-none">About Me</a></div>
+          <div class="col"><a href="#projects" class="font-color text-decoration-none">Activities</a></div>
         </div>
       </div>
     </div>
   </div>
 
-<div class="container hero py-5">
-  <div class="row align-items-center">
-    <div class="col-md-6 hero-text">
-      <h1>Hi, I am Leanne Lamano!</h1>
-      <p class="hero-intro">
-        I’m an aspiring web developer passionate about creating clean, user-friendly designs.
-        I enjoy turning ideas into functional websites and exploring new technologies to improve my skills.
-      </p>
-      <div class="hero-buttons d-flex justify-content-center gap-3 mt-3">
-        <a href="#" class="btn btn-primary me-2">Resume</a>
-        <a href="#" class="btn btn-outline-light">Contact</a>
+  <div class="container container-position py-5" id="home" style="margin-top: 120px;">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8 px-3">
+        <div class="bg-white rounded-4 shadow p-5">
+          <div class="row align-items-center">
+
+            <div class="col-md-6">
+              <h1 class="text-dark text-center mb-4">Hi, I am Leanne Lamano!</h1>
+              <p class="text-dark text-center">
+                I’m an aspiring web developer passionate about creating clean, user-friendly designs.
+                I enjoy turning ideas into functional websites and exploring new technologies to improve my skills.
+              </p>
+              <div class="hero-buttons d-flex justify-content-center gap-4 mt-3">
+                <a href="#about" class="btn btn-outline-dark">Contact</a>
+              </div>
+            </div>
+
+            <div class="col-md-6 text-center">
+              <img src="profile1.png" alt="Profile Image" class="img-fluid rounded"
+                style="max-width: 100%; height: auto;">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="col-md-6 hero-image text-center">
-      <img src="profile1.png" alt="Profile Image" class="img-fluid rounded">
+  <div class="container  container-position py-5" id="about" style="margin-top: 120px;">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="bg-white rounded-4 shadow p-5">
+          <div class="row align-items-start justify-content-between">
+
+            <div class="col-md-6">
+              <h2 class="mb-3 text-center" style="color: #d37dc8;">About Me</h2>
+              <p class="text-dark" mb-3 style="text-align: justify;">
+                I’m Leanne Lamano, a passionate front-end developer who loves crafting visually engaging websites.
+                My design style blends playful color palettes, smooth interactions, and user-centered layouts.
+                Whether it’s a scrollable gallery or a cinematic homepage, I aim to make every experience memorable.
+              </p>
+              <p class="text-dark" style="text-align: justify;">
+                I thrive on feedback, iterate quickly, and enjoy experimenting with modern trends like gradients,
+                glassmorphism, and animated effects.
+                Let’s build something beautiful together!
+              </p>
+            </div>
+
+            <div class="col-md-5">
+              <h2 class="mb-3 text-center" style="color: #d37dc8;">Contact Details</h2>
+              <p class="text-dark mb-2"><strong>Email:</strong>
+                <a href="mailto:leanne@example.com" class="text-decoration-none"
+                  style="color: #c54f82;">abulencialeanne@gmail.com</a>
+              </p>
+              <p class="text-dark mb-2"><strong>Phone:</strong>
+                <span style="color: #c54f82;">+63 939 127 2967</span>
+              </p>
+              <p class="text-dark mb-2"><strong>GitHub:</strong>
+                <a href="https://github.com/your-username" target="_blank" class="text-decoration-none"
+                  style="color: #c54f82;">github.com/abulencialeanne</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
+  <div class="container container-position py-5" id="projects" style="margin-top: 120px;">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="bg-white rounded-4 shadow p-5">
+          <div class="row align-items-start justify-content-between">
 
-<div class="circle one"></div>
-<div class="circle two"></div>
-<div class="circle three"></div>
-<div class="circle four"></div>
+            <h2 class="mb-3 text-center" style="color: #d37dc8;">Activities</h2>
+            <p class="text-dark" style="text-align: justify;">
+              Here are two of my recent works showcasing interactive layouts and modern design techniques.
+              Each activity reflects my growth in front-end development and my passion for creating delightful user
+              experiences.
+            </p>
 
+            <div class="col-md-5">
+              <p class="text-dark mb-2"><strong>Activity 4:</strong>
+                <a href="https://abulencialeanne.github.io/Xiaomi-Smart-Camera-C201/" class="btn btn-outline-light"
+                  style="color: #c54f82;">View Activity 4 - Products</a>
+              </p>
+              <p class="text-dark mb-2"><strong>Activity 5:</strong>
+                <a href="https://abulencialeanne.github.io/fiestamall/" class="btn btn-outline-light"
+                  style="color: #c54f82;">View Activity 5 - Showcasing Place</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
