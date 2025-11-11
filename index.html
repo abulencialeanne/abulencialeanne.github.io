@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio of Leanne</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+
   <style>
     html {
       scroll-behavior: smooth;
@@ -19,12 +23,23 @@
       min-height: 100vh;
     }
 
+    .nav-link.active {
+      color: #a33c6a !important;
+    }
+
+    .nav-link i {
+      font-size: 1.5rem;
+    }
+
+
     .glassmorphism {
       background: rgba(255, 255, 255, 0.20);
       border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
       padding: 1rem 2rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .hero-image img {
@@ -59,45 +74,218 @@
       position: relative;
       z-index: 1;
     }
+
+    body {
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      animation: float 10s infinite ease-in-out colorShift 20s infinite alternate;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-30px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes colorShift {
+      0% {
+        background-color: #fce4ec;
+      }
+
+      25% {
+        background-color: #e77ca2;
+      }
+
+      50% {
+        background-color: #f48fb1;
+      }
+
+      75% {
+        background-color: #f06292;
+      }
+
+      100% {
+        background-color: #ec407a;
+      }
+    }
+
+    .about-card {
+      animation: fadeSlide 1s ease-out;
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #c54f82, #d37dc8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+    .timeline {
+      list-style: none;
+      padding-left: 0;
+      border-left: 3px solid #c54f82;
+      margin-left: 1rem;
+    }
+
+    .timeline li {
+      margin: 2rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: 0;
+      width: 18px;
+      height: 18px;
+      background-color: #c54f82;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px #c54f82;
+    }
+
+    .hero-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 2px solid transparent;
+      border-image: linear-gradient(45deg, #f8bbd0, #c54f82) 1;
+      animation: fadeSlide 1s ease-out;
+    }
+
+    .hero-text {
+      flex: 1 1 50%;
+      padding-right: 2rem;
+    }
+
+    .hero-text h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-align: left;
+    }
+
+    .hero-text p {
+      text-align: left;
+      font-size: 1.1rem;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #a33c6a;
+      margin-top: 0.5rem;
+    }
+
+    .hero-image {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+
+    .image-frame {
+      padding: 1rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(197, 79, 130, 0.3);
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #c54f82, #d37dc8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .font-design {
+      font-family: 'Playfair Display', serif;
+      color: #4a154b;
+    }
   </style>
 </head>
 
-<body>
-  <div class="container p-4 mt-3 shadow-lg fixed-top rounded-nav glassmorphism">
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100" tabindex="0">
+  <div class="floating-shape" style="width: 150px; height: 150px; top: 10%; left: 5%;"></div>
+  <div class="floating-shape" style="width: 180px; height: 180px; top: 50%; left: 80%;"></div>
+  <div class="floating-shape" style="width: 120px; height: 120px; top: 80%; left: 20%;"></div>
+  <div class="floating-shape" style="width: 100px; height: 100px; top: 30%; left: 60%;"></div>
+  <div class="floating-shape" style="width: 140px; height: 140px; top: 70%; left: 10%;"></div>
+  <div class="floating-shape" style="width: 160px; height: 160px; top: 20%; left: 75%;"></div>
+  <div class="floating-shape" style="width: 200px; height: 200px; top: 30%; left: 85%;"></div>
+  <div class="floating-shape" style="width: 150px; height: 150px; top: 70%; left: 30%;"></div>
+  <div class="floating-shape" style="width: 160px; height: 150px; top: 20%; left: 50%;"></div>
+
+  <div class="container  px-3 py-2 mt-3 shadow-lg fixed-top rounded-nav glassmorphism" id="navbar">
     <div class="row align-items-center">
       <div class="col-md-6 col-12 text-md-start text-center">
-        <div class="h3 fw-bold m-0">Portfolio</div>
+        <div class="h3 fw-bold m-3 font-design">Portfolio</div>
       </div>
       <div class="col-md-6 col-12 text-md-end text-center mt-2 mt-md-0 p-3">
         <div class="row">
-          <div class="col"><a href="#home" class="font-color text-decoration-none">Home</a></div>
-          <div class="col"><a href="#about" class="font-color text-decoration-none">About Me</a></div>
-          <div class="col"><a href="#projects" class="font-color text-decoration-none">Activities</a></div>
+          <div class="col"><a href="#home" class="nav-link font-color text-decoration-none"><i
+                class="bi bi-house-door-fill"></i></a></div>
+          <div class="col"><a href="#about" class="nav-link font-color text-decoration-none"><i
+                class="bi bi-person-fill"></i></a></div>
+          <div class="col"><a href="#projects" class="nav-link font-color text-decoration-none"><i
+                class="bi bi-journal-code"></i></a></div>
+
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container container-position py-5" id="home" style="margin-top: 120px;">
+  <div class="container container-position py-5 px-3" id="home" style="margin-top: 120px;">
     <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8 px-3">
-        <div class="bg-white rounded-4 shadow p-5">
-          <div class="row align-items-center">
-
-            <div class="col-md-6">
-              <h1 class="text-dark text-center mb-4">Hi, I am Leanne Lamano!</h1>
-              <p class="text-dark text-center">
-                I’m an aspiring web developer passionate about creating clean, user-friendly designs.
-                I enjoy turning ideas into functional websites and exploring new technologies to improve my skills.
-              </p>
-              <div class="hero-buttons d-flex justify-content-center gap-4 mt-3">
-                <a href="#about" class="btn btn-outline-dark">Contact</a>
-              </div>
+      <div class="col-lg-10 px-3">
+        <div class="hero-card">
+          <div class="hero-text">
+            <h1 class="gradient-text mb-3">Hi, I am Leanne Lamano!</h1>
+            <p class="text-dark">
+              I’m an aspiring web developer passionate about creating clean, user-friendly designs.
+              I enjoy turning ideas into functional websites and exploring new technologies to improve my skills.
+            </p>
+            <p class="tagline">Designing joy, one pixel at a time ✨</p>
+            <div class="hero-buttons mt-4">
+              <a href="#about" class="btn btn-outline-dark">Contact</a>
             </div>
-
-            <div class="col-md-6 text-center">
-              <img src="profile1.png" alt="Profile Image" class="img-fluid rounded"
-                style="max-width: 100%; height: auto;">
+          </div>
+          <div class="hero-image">
+            <div class="image-frame">
+              <img src="profile1.png" alt="Profile Image" class="img-fluid">
             </div>
           </div>
         </div>
@@ -105,31 +293,29 @@
     </div>
   </div>
 
-  <div class="container  container-position py-5" id="about" style="margin-top: 120px;">
+  <div class="container container-position py-5 px-3" id="about" style="margin-top: 120px;">
     <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="bg-white rounded-4 shadow p-5">
-          <div class="row align-items-start justify-content-between">
-
-            <div class="col-md-6">
-              <h2 class="mb-3 text-center" style="color: #d37dc8;">About Me</h2>
-              <p class="text-dark" mb-3 style="text-align: justify;">
+      <div class="col-lg-10">
+        <div class="about-card bg-white rounded-4 shadow p-5">
+          <div class="row gy-4">
+            <div class="col-md-7">
+              <h2 class="gradient-text mb-3">About Me</h2>
+              <p class="text-dark text-justify">
                 I’m Leanne Lamano, a passionate front-end developer who loves crafting visually engaging websites.
                 My design style blends playful color palettes, smooth interactions, and user-centered layouts.
                 Whether it’s a scrollable gallery or a cinematic homepage, I aim to make every experience memorable.
               </p>
-              <p class="text-dark" style="text-align: justify;">
+              <p class="text-dark text-justify">
                 I thrive on feedback, iterate quickly, and enjoy experimenting with modern trends like gradients,
-                glassmorphism, and animated effects.
-                Let’s build something beautiful together!
+                glassmorphism, and animated effects. Let’s build something beautiful together!
               </p>
             </div>
-
             <div class="col-md-5">
-              <h2 class="mb-3 text-center" style="color: #d37dc8;">Contact Details</h2>
+              <h2 class="gradient-text mb-3">Contact Details</h2>
               <p class="text-dark mb-2"><strong>Email:</strong>
-                <a href="mailto:leanne@example.com" class="text-decoration-none"
-                  style="color: #c54f82;">abulencialeanne@gmail.com</a>
+                <a href="mailto:leanne@example.com" class="text-decoration-none" style="color: #c54f82;">
+                  abulencialeanne@gmail.com
+                </a>
               </p>
               <p class="text-dark mb-2"><strong>Phone:</strong>
                 <span style="color: #c54f82;">+63 939 127 2967</span>
@@ -145,35 +331,30 @@
     </div>
   </div>
 
+
   <div class="container container-position py-5" id="projects" style="margin-top: 120px;">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="bg-white rounded-4 shadow p-5">
-          <div class="row align-items-start justify-content-between">
-
-            <h2 class="mb-3 text-center" style="color: #d37dc8;">Activities</h2>
-            <p class="text-dark" style="text-align: justify;">
-              Here are two of my recent works showcasing interactive layouts and modern design techniques.
-              Each activity reflects my growth in front-end development and my passion for creating delightful user
-              experiences.
-            </p>
-
-            <div class="col-md-5">
-              <p class="text-dark mb-2"><strong>Activity 4:</strong>
-                <a href="https://abulencialeanne.github.io/Xiaomi-Smart-Camera-C201/" class="btn btn-outline-light"
-                  style="color: #c54f82;">View Activity 4 - Products</a>
-              </p>
-              <p class="text-dark mb-2"><strong>Activity 5:</strong>
-                <a href="https://abulencialeanne.github.io/fiestamall/" class="btn btn-outline-light"
-                  style="color: #c54f82;">View Activity 5 - Showcasing Place</a>
-              </p>
-            </div>
-
-          </div>
+          <h2 class="mb-4 text-center" style="color: #d37dc8;">Activities</h2>
+          <ul class="timeline">
+            <li>
+              <h5 style="color: #c54f82;">Activity 4: Xiaomi Smart Camera</h5>
+              <p class="text-dark">A product showcase page with modern layout and responsive design.</p>
+              <a href="https://abulencialeanne.github.io/Xiaomi-Smart-Camera-C201/" class="btn btn-outline-dark">View
+                Project</a>
+            </li>
+            <li>
+              <h5 style="color: #c54f82;">Activity 5: Fiesta Mall Showcase</h5>
+              <p class="text-dark">An interactive layout highlighting a vibrant local destination.</p>
+              <a href="https://abulencialeanne.github.io/fiestamall/" class="btn btn-outline-dark">View Project</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
