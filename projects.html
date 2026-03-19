@@ -2,156 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>My Portfolio - Projects</title>
 
-  <!-- Bootstrap CDN (required for your container/row/col classes) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
 
     body {
       margin: 0;
-      padding: 0;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       background-color: #ffc9f4;
-      height: 100vh;
+      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
 
+    /* ── Wrapper ── */
     .wrapper {
-      width: 95%;
-      height: 95%;
-      background-color: #ffc9f4;
+      width: 100%;
+      max-width: 900px;
+      padding: 0 16px 24px;
       position: relative;
     }
 
+    /* ── Header row: title + avatar ── */
+    .header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 8px 0;
+    }
+
     .header {
-      padding: 20px 40px;
-      font-size: 26px;
+      font-size: clamp(18px, 5vw, 26px);
       font-weight: 400;
       color: black;
+      margin: 0;
     }
 
-    .circle {
-  position: absolute;
-  top: 25px;
-  right: 40px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-
-    /* Main card */
-   .card-box {
-  width: 90%;
-  height: 65%;
-  background-color: #ffdcf6;
-  border-radius: 40px;
-  margin: 40px auto 0 auto;
-  overflow-y: auto;
-  padding: 40px;
-}
-
-
-    .buttons {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 80px;
-      margin-top: 35px;
+    .profile-circle {
+      width: clamp(36px, 8vw, 50px);
+      height: clamp(36px, 8vw, 50px);
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
-    .btn-custom {
-      width: 200px;
-      height: 50px;
-      background-color: #ff99cc;
-      border-radius: 20px;
-      border: none;
-      font-size: 20px;
-      color: black;
-      font-weight: 300;
-      cursor: pointer;
+    /* ── Main card ── */
+    .card-box {
+      background-color: #ffdcf6;
+      border-radius: 40px;
+      margin: 24px auto 0;
+      padding: clamp(20px, 5vw, 40px);
+      overflow-y: auto;
+      /* Let it grow with content instead of fixed height */
+      max-height: 65vh;
     }
 
-    .btn-custom:hover {
-      background-color: #e68abf;
+    /* ── Activities title ── */
+    .acts-title {
+      font-size: clamp(18px, 5vw, 24px);
+      font-weight: bold;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+      padding-top: 20px;
+      text-align: center;
     }
 
-    /* Timeline spacing */
+    /* ── Timeline ── */
+    .timeline {
+      padding: 0;
+    }
+
     .timeline li {
       margin-bottom: 25px;
       list-style: none;
     }
-    .acts-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-      padding-top: 40px;
-      text-align: center;
+
+    .timeline h5 {
+      font-size: clamp(14px, 3.5vw, 18px);
+    }
+
+    .timeline p {
+      font-size: clamp(13px, 3vw, 16px);
+    }
+
+    /* ── Buttons ── */
+    .buttons {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(16px, 5vw, 80px);
+      margin-top: 28px;
+    }
+
+    .btn-custom {
+      width: clamp(130px, 40vw, 200px);
+      height: 50px;
+      background-color: #ff99cc;
+      border-radius: 20px;
+      border: none;
+      font-size: clamp(15px, 3.5vw, 20px);
+      color: black;
+      font-weight: 300;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-custom:hover,
+    .btn-custom:active {
+      background-color: #e68abf;
+    }
+
+    /* ── Very small phones ── */
+    @media (max-width: 400px) {
+      .card-box {
+        border-radius: 24px;
+        padding: 16px;
+      }
+
+      .buttons {
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
 <div class="wrapper">
-  <div class="header">My Portfolio</div>
-  <img src="2.jpg" class="circle" alt="Profile Image">
 
-  <!-- CARD CONTENT -->
+  <!-- Header + Avatar -->
+  <div class="header-row">
+    <div class="header">My Portfolio</div>
+    <img src="2.jpg" class="profile-circle" alt="Profile Image">
+  </div>
+
+  <!-- Card Content -->
   <div class="card-box">
-
-    <!-- Your Activities Code -->
-    <div class="container" id="projects">
+    <div class="container-fluid" id="projects">
       <div class="row justify-content-center">
         <div class="col-12">
-          <div class="bg-white rounded-4 shadow p-5">
+          <div class="bg-white rounded-4 shadow p-4">
             <h2 class="acts-title">Activities</h2>
             <ul class="timeline">
+
               <li>
                 <h5 style="color: #aa2c63;">Activity 4: Xiaomi Smart Camera</h5>
                 <p class="text-dark">A product showcase page with modern layout and responsive design.</p>
-                <a href="https://abulencialeanne.github.io/Xiaomi-Smart-Camera-C201/" class="btn btn-outline-dark">View Project</a>
+                <a href="https://abulencialeanne.github.io/Xiaomi-Smart-Camera-C201/" class="btn btn-outline-dark btn-sm">View Project</a>
               </li>
 
               <li>
                 <h5 style="color: #c54f82;">Activity 5: Fiesta Mall Showcase</h5>
                 <p class="text-dark">An interactive layout highlighting a vibrant local destination.</p>
-                <a href="https://abulencialeanne.github.io/fiestamall/" class="btn btn-outline-dark">View Project</a>
+                <a href="https://abulencialeanne.github.io/fiestamall/" class="btn btn-outline-dark btn-sm">View Project</a>
               </li>
 
               <li>
                 <h5 style="color: #c54f82;">Activity 6: Barbie Gallery</h5>
                 <p class="text-dark">A pastel-styled gallery that brings Barbie fanart to life with its elegance.</p>
-                <a href="https://abulencialeanne.github.io/gallery/" class="btn btn-outline-dark">View Project</a>
+                <a href="https://abulencialeanne.github.io/gallery/" class="btn btn-outline-dark btn-sm">View Project</a>
               </li>
 
               <li>
                 <h5 style="color: #c54f82;">Activity 7: Cosmetic Products</h5>
                 <p class="text-dark">A modern showcase for cosmetic products with a clean and elegant design.</p>
-                <a href="https://abulencialeanne.github.io/cosmetic/" class="btn btn-outline-dark">View Project</a>
+                <a href="https://abulencialeanne.github.io/cosmetic/" class="btn btn-outline-dark btn-sm">View Project</a>
               </li>
+
             </ul>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
-  <!-- Buttons -->
+  <!-- Navigation Buttons -->
   <div class="buttons">
     <button class="btn-custom" onclick="window.location.href='details.html'">Details</button>
     <button class="btn-custom" onclick="window.location.href='index.html'">Home</button>
   </div>
+
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

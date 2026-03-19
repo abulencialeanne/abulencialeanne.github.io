@@ -3,22 +3,31 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>My Portfolio in WebDev</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Farro:wght@400;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Farro:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #ffcce0;
       min-height: 100vh;
+      min-height: 100dvh; /* dynamic viewport height — better for mobile browsers */
       display: flex;
       align-items: center;
-      overflow: hidden;
+      justify-content: center;
       position: relative;
+      overflow-x: hidden;
+      /* Safe area insets for notched phones (important for Median.co) */
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
 
+    /* ── Typography ── */
     .font-italianno {
       font-family: 'Italianno', cursive;
       letter-spacing: 2px;
@@ -31,167 +40,135 @@
       color: #79626f;
     }
 
+    /* ── Title Block ── */
     .title-box {
-      padding-left: 100px;
+      padding-left: clamp(1rem, 5vw, 100px);
+      padding-right: 1rem;
     }
 
+    /* Fluid font size: min 2.5rem → max 5rem based on viewport */
+    .display-1 {
+      font-size: clamp(2.5rem, 8vw, 5rem) !important;
+      line-height: 1.1;
+    }
+
+    /* ── Name ── */
     .name {
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 3vw, 1.5rem);
       font-weight: bold;
       color: #9b6e6e;
       margin-bottom: 1rem;
     }
 
-    .btn {
-      width: 200px;
+    /* ── Profile Image ── */
+    .profile-img {
+      width: clamp(180px, 40vw, 400px);
+      height: clamp(180px, 40vw, 400px);
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ── Buttons ── */
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .btn-custom {
+      width: clamp(140px, 40vw, 200px);
       height: 50px;
       background-color: #ff99cc;
       border-radius: 20px;
       border: none;
-      font-size: 20px;
+      font-size: clamp(16px, 3vw, 20px);
       color: black;
       font-weight: 300;
       cursor: pointer;
+      transition: background-color 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .btn:hover {
+    .btn-custom:hover,
+    .btn-custom:active {
       background-color: #e68abf;
     }
 
+    /* ── Layout spacing ── */
+    .main-container {
+      width: 100%;
+      padding: 2rem 0;
+    }
+
+    /* On very small screens, add vertical breathing room */
+    @media (max-width: 575px) {
+      .title-box {
+        padding-left: 1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .display-1 {
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+      }
+
+      .font-farro {
+        padding: 0.5rem !important;
+      }
+    }
+
+    /* Tablet */
+    @media (min-width: 576px) and (max-width: 767px) {
+      .title-box {
+        padding-left: 2rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    /* ── Floating Circles (z-index: -1 so they never block taps) ── */
     .circle {
-      position: absolute;
+      position: fixed; /* fixed so they don't affect scroll/layout */
       border-radius: 50%;
       opacity: 0.4;
       animation: float 15s infinite linear;
       z-index: -1;
+      pointer-events: none; /* never intercept touches */
     }
 
-    .circle:nth-child(1) {
-      width: 80px;
-      height: 80px;
-      background: #ff99cc;
-      top: 20%;
-      left: 10%;
-      animation-duration: 18s;
-    }
+    .circle:nth-child(1)  { width: 80px;  height: 80px;  background: #ff99cc; top: 20%; left: 10%; animation-duration: 18s; }
+    .circle:nth-child(2)  { width: 120px; height: 120px; background: #e68abf; top: 50%; left: 80%; animation-duration: 22s; }
+    .circle:nth-child(3)  { width: 60px;  height: 60px;  background: #9b6e6e; top: 70%; left: 30%; animation-duration: 20s; }
+    .circle:nth-child(4)  { width: 100px; height: 100px; background: #765d6c; top: 40%; left: 60%; animation-duration: 25s; }
+    .circle:nth-child(5)  { width: 150px; height: 150px; background: #ffb3d9; top: 10%; left: 50%; animation-duration: 28s; }
+    .circle:nth-child(6)  { width: 90px;  height: 90px;  background: #d98cb3; top: 80%; left: 15%; animation-duration: 24s; }
+    .circle:nth-child(7)  { width: 70px;  height: 70px;  background: #c080a1; top: 30%; left: 75%; animation-duration: 26s; }
+    .circle:nth-child(8)  { width: 110px; height: 110px; background: #a3668f; top: 60%; left: 5%;  animation-duration: 30s; }
+    .circle:nth-child(9)  { width: 130px; height: 130px; background: #ff80bf; top: 15%; left: 25%; animation-duration: 27s; }
+    .circle:nth-child(10) { width: 75px;  height: 75px;  background: #b36699; top: 65%; left: 70%; animation-duration: 21s; }
+    .circle:nth-child(11) { width: 95px;  height: 95px;  background: #cc6699; top: 85%; left: 40%; animation-duration: 29s; }
+    .circle:nth-child(12) { width: 140px; height: 140px; background: #996680; top: 35%; left: 5%;  animation-duration: 32s; }
 
-    .circle:nth-child(2) {
-      width: 120px;
-      height: 120px;
-      background: #e68abf;
-      top: 50%;
-      left: 80%;
-      animation-duration: 22s;
+    /* Reduce circle sizes on mobile so they don't overpower content */
+    @media (max-width: 575px) {
+      .circle { transform: scale(0.6); }
     }
-
-    .circle:nth-child(3) {
-      width: 60px;
-      height: 60px;
-      background: #9b6e6e;
-      top: 70%;
-      left: 30%;
-      animation-duration: 20s;
-    }
-
-    .circle:nth-child(4) {
-      width: 100px;
-      height: 100px;
-      background: #765d6c;
-      top: 40%;
-      left: 60%;
-      animation-duration: 25s;
-    }
-
-    .circle:nth-child(5) {
-      width: 150px;
-      height: 150px;
-      background: #ffb3d9;
-      top: 10%;
-      left: 50%;
-      animation-duration: 28s;
-    }
-
-    .circle:nth-child(6) {
-      width: 90px;
-      height: 90px;
-      background: #d98cb3;
-      top: 80%;
-      left: 15%;
-      animation-duration: 24s;
-    }
-
-    .circle:nth-child(7) {
-      width: 70px;
-      height: 70px;
-      background: #c080a1;
-      top: 30%;
-      left: 75%;
-      animation-duration: 26s;
-    }
-
-    .circle:nth-child(8) {
-      width: 110px;
-      height: 110px;
-      background: #a3668f;
-      top: 60%;
-      left: 5%;
-      animation-duration: 30s;
-    }
-
-    .circle:nth-child(9) {
-      width: 130px;
-      height: 130px;
-      background: #ff80bf;
-      top: 15%;
-      left: 25%;
-      animation-duration: 27s;
-    }
-
-    .circle:nth-child(10) {
-      width: 75px;
-      height: 75px;
-      background: #b36699;
-      top: 65%;
-      left: 70%;
-      animation-duration: 21s;
-    }
-
-    .circle:nth-child(11) {
-      width: 95px;
-      height: 95px;
-      background: #cc6699;
-      top: 85%;
-      left: 40%;
-      animation-duration: 29s;
-    }
-
-    .circle:nth-child(12) {
-      width: 140px;
-      height: 140px;
-      background: #996680;
-      top: 35%;
-      left: 5%;
-      animation-duration: 32s;
-    }
-
 
     @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0);
-      }
-
-      50% {
-        transform: translateY(-50px) translateX(30px);
-      }
-
-      100% {
-        transform: translateY(0) translateX(0);
-      }
+      0%   { transform: translateY(0)    translateX(0); }
+      50%  { transform: translateY(-50px) translateX(30px); }
+      100% { transform: translateY(0)    translateX(0); }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- Background Circles -->
   <div class="circle"></div>
   <div class="circle"></div>
   <div class="circle"></div>
@@ -205,24 +182,29 @@
   <div class="circle"></div>
   <div class="circle"></div>
 
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 text-center text-md-start mb-md-0 title-box">
+  <!-- Main Content -->
+  <div class="container main-container">
+    <div class="row align-items-center justify-content-center">
+
+      <!-- Left: Title -->
+      <div class="col-12 col-md-6 text-center text-md-start mb-4 mb-md-0 title-box">
         <h1 class="display-1 fw-bold">
           <span class="font-italianno">My Portfolio in</span>
           <span class="font-farro p-4">WebDev</span>
         </h1>
       </div>
-      <div class="col-md-6 text-center">
-        <img src="2.jpg" alt="Profile Picture" class="rounded-circle"
-          style="width: 400px; height: 400px; object-fit: cover;" />
+
+      <!-- Right: Photo + Name + Buttons -->
+      <div class="col-12 col-md-6 text-center">
+        <img src="2.jpg" alt="Profile Picture" class="profile-img" />
         <div class="name mt-3">Leanne A. Lamano</div>
 
         <div class="buttons">
-          <button class="btn" onclick="window.location.href='details.html'">Details</button>
-          <button class="btn" onclick="window.location.href='projects.html'">Projects</button>
+          <button class="btn-custom" onclick="window.location.href='details.html'">Details</button>
+          <button class="btn-custom" onclick="window.location.href='projects.html'">Projects</button>
         </div>
       </div>
+
     </div>
   </div>
 
